@@ -1,4 +1,4 @@
-import styles from '../EventItem/EventItem.module.css'
+import styles from "../EventItem/EventItem.module.css";
 const EventItem = ({ info, name, image, onEventClick, id }) => {
   //props dentro de llaves
 
@@ -10,11 +10,14 @@ const EventItem = ({ info, name, image, onEventClick, id }) => {
   return (
     <div className={styles.eventItemContainer}>
       <img src={image} alt={name} width={200} height={200} />
-      <div className={styles.eventInfoContainer}> 
+      <div className={styles.eventInfoContainer}>
         <h4 className={styles.eventIName}>{name}</h4>
         <p className={styles.eventInfo}>{info}</p>
-        <button onClick={handleSeeMoreClick} className={styles.seeMoreBtn}>Ver más</button>
-      </div>     
+        <button onClick={handleSeeMoreClick} className={styles.seeMoreBtn}>
+          {/*<Link to={`/detail/${id}`}>Ver más</Link>*/} 
+          Ver más
+        </button>
+      </div>
     </div>
   );
 };
