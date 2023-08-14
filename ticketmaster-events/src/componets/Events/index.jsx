@@ -1,12 +1,7 @@
 import EventItem from "./Components/EventItem";
-import { useState } from "react";
-import eventsJSON from "../../data/events.json";
-
+import useEventsData from "../../hooks/useEventsData";
 const Events = ({ searchValue }) => {
-  const [data] = useState(eventsJSON);
-  const {
-    _embedded: { events },
-  } = data; //object destructuring
+  const {events, isLoading, error} = useEventsData();
 
   const handleEventItemClick = (id) => {
     console.log("evento clickeado:", id);
@@ -30,6 +25,12 @@ const Events = ({ searchValue }) => {
     ));
   };
 
+  if (error) {
+    return <div>Ha ocurrido un error</div>
+  }
+  if (isLoading) { 
+    return <div>Cargando resultados...</div>
+  }
   return (
     <div>
       Eventos
